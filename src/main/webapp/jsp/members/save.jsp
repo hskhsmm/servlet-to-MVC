@@ -8,7 +8,7 @@
     //request, response는 그냥 사용 가능
     MemberRepository memberRepository = MemberRepository.getInstance();
 
-    System.out.println("MemberSaveServlet.service");
+    System.out.println("save.jsp");
     String username = request.getParameter("username");
     int age = Integer.parseInt(request.getParameter("age"));
 
@@ -20,6 +20,7 @@
 
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>

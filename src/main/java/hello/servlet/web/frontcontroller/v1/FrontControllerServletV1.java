@@ -28,6 +28,7 @@ public class FrontControllerServletV1 extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("FrontControllerServletV1.service");
 
+        //요청된 URI에 따라 다른 객체 인스턴스 반환
         String requestURI = request.getRequestURI();
 
         //코드에 일관성 생김

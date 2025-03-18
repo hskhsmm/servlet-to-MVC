@@ -24,32 +24,34 @@ public class MemberListServlet extends HttpServlet {
 
         List<Member> members = memberRepository.findAll();
 
-        PrintWriter writer = response.getWriter();
+        PrintWriter w = response.getWriter();
 
-        writer.write("<html>");
-        writer.write("<head>");
-        writer.write("<meta charset=\"UTF-8\">");
-        writer.write("<title>Member List</title>");
-        writer.write("</head>");
-        writer.write("<body>");
-        writer.write("<a href=\"/index.html\">메인</a>");
-        writer.write("<table border=\"1\">");
-        writer.write("<thead>");
-        writer.write("<tr><th>ID</th><th>Username</th><th>Age</th></tr>");
-        writer.write("</thead>");
-        writer.write("<tbody>");
+        w.write("<html>");
+        w.write("<head>");
+        w.write("      <meta charset=\"UTF-8\">");
+        w.write("      <title>Member List</title>");
+        w.write("</head>");
+        w.write("<body>");
+        w.write("<a href=\"/index.html\">메인</a>");
+        w.write("<table>");
+        w.write("      <thead>");
+        w.write("      <th>id</th>");
+        w.write("      <th>Username</th>");
+        w.write("      <th>age</th>");
+        w.write("      </thead>");
+        w.write("      <tbody>");
 
         for (Member member : members) {
-            writer.write("<tr>");
-            writer.write("<td>" + member.getId() + "</td>");
-            writer.write("<td>" + member.getUsername() + "</td>");
-            writer.write("<td>" + member.getAge() + "</td>");
-            writer.write("</tr>");
+            w.write("      <tr>");
+            w.write("      <td>" + member.getId() + "</td>");
+            w.write("      <td>" + member.getUsername() + "</td>");
+            w.write("      <td>" + member.getAge() + "</td>");
+            w.write("      </tr>");
         }
 
-        writer.write("</tbody>");
-        writer.write("</table>");
-        writer.write("</body>");
-        writer.write("</html>");
+        w.write("      </tbody>");
+        w.write("</table>");
+        w.write("</body>");
+        w.write("</html>");
     }
 }
