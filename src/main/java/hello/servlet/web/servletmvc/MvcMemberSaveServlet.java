@@ -28,7 +28,7 @@ public class MvcMemberSaveServlet extends HttpServlet {
         //Model에 데이터 보관해야 함
         request.setAttribute("member", member);
 
-        String viewPath = "WEB-INF/views/member-result.jsp";
+        String viewPath = "WEB-INF/views/save-result.jsp";
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
         dispatcher.forward(request, response);
     }
