@@ -1,0 +1,112 @@
+/* 전체 페이지 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 컨테이너 스타일 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 큰 제목 스타일 */
+.main-title {
+    font-size: 36px; /* 큰 글씨 */
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    border-bottom: 4px solid #007bff; /* 제목 아래에 강조선 추가 */
+    padding-bottom: 10px;
+}
+
+/* 제목 스타일 */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+/* 메뉴 리스트 스타일 */
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu > li {
+    background-color: #ffffff;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+
+.menu > li > a {
+    display: block;
+    padding: 18px 30px; /* 넓고 여유있는 클릭 영역 */
+    color: #333;
+    text-decoration: none;
+    font-size: 18px; /* 좀 더 큰 글자 */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border-bottom: 2px solid transparent; /* 메뉴 구분선 추가 */
+}
+
+.menu > li > a:hover {
+    background-color: #007bff;
+    color: white;
+    border-bottom: 2px solid #ffffff; /* 선택했을 때 밑줄 */
+}
+
+/* 하위 메뉴 스타일 */
+.menu li ul {
+    list-style-type: none;
+    padding-left: 30px;
+    background-color: #f8f9fa;
+    border-left: 5px solid #007bff; /* 하위 메뉴 구분선 */
+}
+
+.menu li ul li a {
+    padding: 15px 30px;
+    color: #555;
+    font-size: 16px;
+    font-weight: normal;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid #f1f1f1; /* 하위 메뉴 구분선 */
+}
+
+.menu li ul li a:hover {
+    background-color: #f1f1f1;
+}
+
+/* 반응형 처리 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .menu > li > a {
+        font-size: 16px;
+        padding: 15px 25px; /* 모바일에서 적당한 크기 */
+    }
+
+    .menu li ul li a {
+        font-size: 14px;
+    }
+
+    /* 큰 제목 크기 조정 */
+    .main-title {
+        font-size: 28px;
+    }
+}
