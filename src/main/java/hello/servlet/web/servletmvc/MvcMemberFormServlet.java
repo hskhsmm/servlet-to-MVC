@@ -12,12 +12,12 @@ import java.io.IOException;
 @WebServlet(name = "mvcMemberFormServlet", urlPatterns = "/servlet-mvc/members/new-form")
 public class MvcMemberFormServlet extends HttpServlet {
 
-    //컨트롤러에 요청이 들어와야 함
+    //컨트롤러에 요청이 들어와야 함 -> 컨트롤러를 거쳐서 뷰로 들어감
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String viewPath = "/WEB-INF/views/new-form.jsp";
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
         //서블릿에서 jsp 호출
-        dispatcher.forward(request, response);
+        dispatcher.forward(request, response); //함수 한 번 호출하듯이.
     }
 }
