@@ -4,8 +4,7 @@ import hello.servlet.domain.member.Member;
 import hello.servlet.domain.member.MemberRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -16,13 +15,15 @@ public class SpringMemberControllerV3 {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
-    @RequestMapping("/new-form")
+//    @RequestMapping(value = "/new-form", method = RequestMethod.GET)
+    @GetMapping("/new-form")
     public String newForm() {
         return "new-form"; //스프링 애노테이션 기반의 컨트롤러는 모델 앤 뷰를 반환해도 되고 문자를 반환해도 됨.
         //그럼 view 이름으로 알고 프로세스가 진행됨.
     }
 
-    @RequestMapping("/save")
+//    @RequestMapping(value = "/save", method = RequestMethod.POST) //사이드 이펙트가 없으면 이렇게 반환해줘야 함
+    @PostMapping("/save")
     //HttpServletRequest request, HttpServletResponse response 대신 RequestParam으로 받을 수 있음
     public String save(
             @RequestParam("username") String username,
@@ -36,7 +37,8 @@ public class SpringMemberControllerV3 {
         return "save-result";
     }
 
-    @RequestMapping
+    @GetMapping
+//    @RequestMapping(method = RequestMethod.GET)
     public String members(Model model) {
 
         List<Member> members = memberRepository.findAll();
