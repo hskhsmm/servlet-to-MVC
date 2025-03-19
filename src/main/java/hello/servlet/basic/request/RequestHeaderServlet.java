@@ -3,6 +3,7 @@ package hello.servlet.basic.request;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,7 +17,11 @@ public class RequestHeaderServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         printStartLine(request);
+        printHeaders(request);
+        printHeaderUtils(request);
+        printEtc(request);
 
+        response.getWriter().write("ok");
     }
 
     private void printStartLine(HttpServletRequest request) {
@@ -60,5 +65,62 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("--- Headers - end ---");
         System.out.println();
     }
+
+    private void printHeaderUtils(HttpServletRequest request) {
+        System.out.println("--- Header 편의 조회 start ---");
+
+        // Host 정보 조회
+        System.out.println("[Host 편의 조회]");
+        System.out.println("request.getServerName() = " + request.getServerName()); // Host 헤더
+        System.out.println("request.getServerPort() = " + request.getServerPort()); // Host 헤더
+        System.out.println();
+
+        // Accept-Language 정보 조회
+        System.out.println("[Accept-Language 편의 조회]");
+        request.getLocales().asIterator()
+                .forEachRemaining(locale -> System.out.println("locale = " + locale));
+        System.out.println("request.getLocale() = " + request.getLocale());
+        System.out.println();
+
+        // Cookie 정보 조회
+        System.out.println("[Cookie 편의 조회]");
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                System.out.println(cookie.getName() + ": " + cookie.getValue());
+            }
+        }
+        System.out.println();
+
+        // Content 정보 조회
+        System.out.println("[Content 편의 조회]");
+        System.out.println("request.getContentType() = " + request.getContentType());
+        System.out.println("request.getContentLength() = " + request.getContentLength());
+        System.out.println("request.getCharacterEncoding() = " + request.getCharacterEncoding());
+
+        System.out.println("--- Header 편의 조회 end ---");
+        System.out.println();
+    }
+
+    private void printEtc(HttpServletRequest request) {
+        System.out.println("--- 기타 조회 start ---");
+
+        // Remote 정보 조회
+        System.out.println("[Remote 정보]");
+        System.out.println("request.getRemoteHost() = " + request.getRemoteHost()); // 원격 호스트
+        System.out.println("request.getRemoteAddr() = " + request.getRemoteAddr()); // 원격 IP 주소
+        System.out.println("request.getRemotePort() = " + request.getRemotePort()); // 원격 포트 번호
+        System.out.println();
+
+        // Local 정보 조회
+        System.out.println("[Local 정보]");
+        System.out.println("request.getLocalName() = " + request.getLocalName()); // 로컬 호스트 이름
+        System.out.println("request.getLocalAddr() = " + request.getLocalAddr()); // 로컬 IP 주소
+        System.out.println("request.getLocalPort() = " + request.getLocalPort()); // 로컬 포트 번호
+
+        System.out.println("--- 기타 조회 end ---");
+        System.out.println();
+    }
+
+
 
 }
